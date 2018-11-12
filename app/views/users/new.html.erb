@@ -1,8 +1,17 @@
 <h2>Create Account</h2>
 
     <%= form_for @user do |f| %>
+
+    
     <label>Username:</label>
     <%=f.text_field :username %><br>
+
+    <label>Password:</label>
+    <%=f.password_field :password %>
+
+    <label>Password Confirmation:</label>
+     <%= f.password_field :password_confirmation %>
+
 
     <label>First Name:</label>
     <%=f.text_field :first_name %><br>
@@ -10,14 +19,14 @@
     <label>Last Name:</label>
     <%=f.text_field :last_name %><br>
 
+    <label>Age:</label>
+    <%= f.text_field :age%>
+
     <label>Bio:</label><br>
     <%=f.text_area :bio %><br>
 
     <label>Interests</label><br>
-
-   
     <%=f.collection_check_boxes(:interest_ids, @interests, :id, :name) %>
-  
 
 
 

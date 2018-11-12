@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :require_login
 
   def index
     @user=User.all
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :first_name, :last_name, :bio, :age, interest_ids:[])
   end
 
   def require_login
