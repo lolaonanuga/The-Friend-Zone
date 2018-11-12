@@ -25,8 +25,27 @@
     <label>Bio:</label><br>
     <%=f.text_area :bio %><br>
 
+
+
     <label>Interests</label><br>
-    <%=f.collection_check_boxes(:interest_ids, @interests, :id, :name) %>
+
+
+    <% @categories.each do |category| %>
+        
+
+
+
+    <%= f.fields_for :categories, category do |i| %>
+        <h2><%= category.name %></h2><br><br>
+        <%=i.fields_for :user_interests, category.user_interests.find_or_initialize_by(user: @user) do |ui| %>
+            <%= ui.collection_check_boxes(:interest_id, category.interests, :id, :name) %>
+            <%end%>
+            <%end%>
+            <%end%>
+
+
+
+
 
 
 

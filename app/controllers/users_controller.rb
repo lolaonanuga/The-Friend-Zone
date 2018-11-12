@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    
     @categories = Category.all
     @interests = Interest.all
   end
@@ -48,7 +49,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :first_name, :last_name, :bio, :age, interest_ids:[])
+    params.require(:user).permit(
+        :username, 
+        :password, 
+        :password_confirmation, 
+        :first_name, 
+        :last_name, 
+        :bio, 
+        :age, 
+        :interest_attributes =>[:id, :name, :user_interest_attributes => [:interest_id, :user_id]])
   end
 
   def require_login
