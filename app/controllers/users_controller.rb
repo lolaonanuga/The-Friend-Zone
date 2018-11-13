@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    
+
     @categories = Category.all
     @interests = Interest.all
   end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
     @user = User.new(user_params.except("categories"))
     user_interests.each{|x| @user.interests << Interest.find(x)}
-    
+
     if @user.save
       redirect_to user_path(@user)
     else
@@ -27,7 +27,8 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
-    @users = User.all
+    @match=@user.match
+
   end
 
   def edit
@@ -54,13 +55,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-        :username, 
-        :password, 
-        :password_confirmation, 
-        :first_name, 
-        :last_name, 
-        :bio, 
-        :age, 
+        :username,
+        :password,
+        :password_confirmation,
+        :first_name,
+        :last_name,
+        :bio,
+        :age,
         :categories =>[:user_interests => [:interest_id =>[]]])
   end
 

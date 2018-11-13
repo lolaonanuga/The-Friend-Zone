@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 Category.delete_all
 Interest.delete_all
 
@@ -38,3 +30,33 @@ cooking = Interest.create(name:"Cooking",category_id: lifestyle.id)
 travel = Interest.create(name:"Travel", category_id: lifestyle.id)
 camping = Interest.create(name:"Camping", category_id: lifestyle.id)
 
+dario=User.create(username: "dar_io", first_name:"Dario", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+lola=User.create(username: "lo_la", first_name:"Lola", last_name:"Lola", age:29, password:"hello", password_confirmation: "hello")
+joe=User.create(username: "jo_e", first_name:"Joe", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+ricky=User.create(username: "ric_ky", first_name:"Ricky", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+rob=User.create(username: "ro_b", first_name:"Rob", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+natasha=User.create(username: "nat_asha", first_name:"Natasha", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+mikko=User.create(username: "mi_kko", first_name:"Mikko", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+chris=User.create(username: "chr_is", first_name:"Chris", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+demany=User.create(username: "de_many", first_name:"Demany", last_name:"Spina", age:29, password:"hello", password_confirmation: "hello")
+
+u1=UserInterest.create(user_id: dario.id, interest_id: climbing.id)
+u2=UserInterest.create(user_id: dario.id, interest_id: gigs.id)
+u3=UserInterest.create(user_id: dario.id, interest_id: museum.id)
+u4=UserInterest.create(user_id: dario.id, interest_id: gaming.id)
+u5=UserInterest.create(user_id: lola.id, interest_id: gigs.id)
+u6=UserInterest.create(user_id: lola.id, interest_id: museum.id)
+u7=UserInterest.create(user_id: lola.id, interest_id: gaming.id)
+u8=UserInterest.create(user_id: lola.id, interest_id: theatre.id)
+u5=UserInterest.create(user_id: joe.id, interest_id: gigs.id)
+u6=UserInterest.create(user_id: joe.id, interest_id: museum.id)
+u7=UserInterest.create(user_id: joe.id, interest_id: cooking.id)
+u8=UserInterest.create(user_id: ricky.id, interest_id: gigs.id)
+u9=UserInterest.create(user_id: ricky.id, interest_id: museum.id)
+u10=UserInterest.create(user_id: ricky.id, interest_id: climbing.id)
+u11=UserInterest.create(user_id: mikko.id, interest_id: fashion.id)
+u12=UserInterest.create(user_id: mikko.id, interest_id: travel.id)
+u13=UserInterest.create(user_id: natasha.id, interest_id: fashion.id)
+u14=UserInterest.create(user_id: natasha.id, interest_id: gaming.id)
+u15=UserInterest.create(user_id: chris.id, interest_id: fashion.id)
+u16=UserInterest.create(user_id: chris.id, interest_id: travel.id)
