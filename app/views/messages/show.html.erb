@@ -1,0 +1,16 @@
+<h1>Dashboard</h1>
+You have received the following messages : <br>
+<% @messages.each do |message| %>
+<% if message.receiver_id==@user.id %>
+From: <%= message.user.username %>
+<%= message.content %> <br>
+at :<%= message.created_at.strftime("%Y-%b-%d %I:%M%p") %>
+<% end %>
+<% end %>
+You have sent the following messages : <br>
+<% @user.messages.each do |message| %>
+To: <%= User.find(message.receiver_id).username %> <br>
+Content: <br><%= message.content %> <br>
+at :<%= message.created_at.strftime("%Y-%b-%d %I:%M%p")%> <br>
+<hr>
+<% end %>
