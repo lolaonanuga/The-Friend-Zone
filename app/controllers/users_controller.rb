@@ -13,11 +13,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user=User.create(user_params)
-    if @user.valid?
+    user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
+    @user = User.new(user_params.except("categories"))
+    user_interests.each{|x| @user.interests << Interest.find(x)}
+    byebug
+    if @user.save
       redirect_to user_path(@user)
     else
-      flash[:errors]=@user.errors.full_messages
+      flash[:error] = @user.errors.full_messages
       redirect_to new_user_path
     end
   end
@@ -57,7 +60,7 @@ class UsersController < ApplicationController
         :last_name, 
         :bio, 
         :age, 
-        :interest_attributes =>[:id, :name, :user_interest_attributes => [:interest_id, :user_id]])
+        :categories =>[:user_interests => [:interest_id =>[]]])
   end
 
   def require_login

@@ -1,5 +1,21 @@
 <h2>Create Account</h2>
 
+
+
+<% if flash[:error] %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(flash[:error].count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+    <ul>
+    <% flash[:error].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
     <%= form_for @user do |f| %>
 
     
@@ -37,7 +53,7 @@
 
     <%= f.fields_for :categories, category do |i| %>
         <h2><%= category.name %></h2><br><br>
-        <%=i.fields_for :user_interests, category.user_interests.find_or_initialize_by(user: @user) do |ui| %>
+        <%=i.fields_for :user_interests do |ui| %>
             <%= ui.collection_check_boxes(:interest_id, category.interests, :id, :name) %>
             <%end%>
             <%end%>
