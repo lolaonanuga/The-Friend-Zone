@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :require_login
 
   def index
     @user=User.all
@@ -13,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    byebug
     @user=User.create(user_params)
     if @user.valid?
       redirect_to user_path(@user)
