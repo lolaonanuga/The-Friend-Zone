@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @match=@user.match
-    @user=User.find(params[:id])
+    @user = User.find(params[:id])
+    @match = @user.match
     @users = User.all
   end
 

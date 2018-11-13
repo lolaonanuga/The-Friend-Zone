@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FriendFinder</title>
+    <title>The Friend Zone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
   </head>
 
   <body>
-  <h1>Friend Finder</h1>
+
+  <nav>
+  <a id="logo" href="/home">The Friend Zone</a>
+  
+  <% if logged_in? %>
+  <a><%= link_to "Logout", logout_path, method: "post" %></a>
+  <%else%>
+  <a><%=link_to "Sign up", signup_path %></a>
+  <a><%=link_to "Log in", login_path %></a>
+  <%end%>
+  </nav>
+
+  <%if flash[:error] %>
+  <% flash[:error].each do |e| %>
+    <li style = "color:red"><%=e%></li>
+    <%end%>
+    <%end%>
+
+
+
     <%= yield %>
   </body>
 </html>
