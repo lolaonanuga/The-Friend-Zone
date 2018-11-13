@@ -5,7 +5,6 @@ class User < ApplicationRecord
     
     accepts_nested_attributes_for :interests
     validates :username, uniqueness: true, presence: true
-    validates :password, uniqueness: true, presence: true
     has_secure_password
 
 end

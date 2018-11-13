@@ -16,7 +16,7 @@
   </div>
 <% end %>
 
-    <%= form_for @user do |f| %>
+    <%= form_for @user, controller: "users", action: "create" do |f| %>
 
     
     <label>Username:</label>
@@ -45,11 +45,8 @@
 
     <label>Interests</label><br>
 
-
     <% @categories.each do |category| %>
         
-
-
 
     <%= f.fields_for :categories, category do |i| %>
         <h2><%= category.name %></h2><br><br>
