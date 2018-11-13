@@ -9,3 +9,24 @@
 <%=@user.bio%>
 
 <%=@user.interests%>
+
+
+<h2>Your Top 3 Friend Matches are:</h2>
+
+<ul>
+<%   @match.each do |user|%>
+Username: <%=  user.username %> <br>
+Name: <%= user.first_name %> <br>
+Age: <%= user.age %> <br>
+Bio: <%= user.bio %> <br>
+The interests you share are:
+<% user.interests.each do |interest| %>
+<br><% if @user.interests.include?(interest) %>
+<%= interest.name %>
+<% end %>
+<% end %>
+<hr>
+<% end %>
+</ul>
+<%= link_to "Send a new message to your Match", messages_url %>
+<%= link_to "See your messages", show_all_url %>

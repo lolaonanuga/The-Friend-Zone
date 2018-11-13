@@ -2,12 +2,12 @@ class UsersController < ApplicationController
 
 
   def index
-    @user=User.all
+    @users=User.all
   end
 
   def new
     @user = User.new
-    
+
     @categories = Category.all
     @interests = Interest.all
   end
@@ -15,8 +15,8 @@ class UsersController < ApplicationController
   def create
     user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
     @user = User.new(user_params.except("categories"))
-    
-    
+
+
     if @user.save
         user_interests.each{|x| @user.interests << Interest.find(x)}
       redirect_to user_path(@user)
@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @match=@user.match
     @user=User.find(params[:id])
+    @match=@user.match
     @users = User.all
   end
 
@@ -56,13 +56,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-        :username, 
-        :password, 
-        :password_confirmation, 
-        :first_name, 
-        :last_name, 
-        :bio, 
-        :age, 
+        :username,
+        :password,
+        :password_confirmation,
+        :first_name,
+        :last_name,
+        :bio,
+        :age,
         :categories =>[:user_interests => [:interest_id =>[]]])
   end
 
