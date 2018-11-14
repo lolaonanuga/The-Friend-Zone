@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
+    @api=Api.new
     @match=@user.match
     @users = User.all
   end

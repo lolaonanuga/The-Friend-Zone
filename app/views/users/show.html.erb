@@ -15,6 +15,7 @@
 
 <ul>
 <%   @match.each do |user|%>
+<% @array=[] %>
 Username: <%=  user.username %> <br>
 Name: <%= user.first_name %> <br>
 Age: <%= user.age %> <br>
@@ -22,9 +23,16 @@ Bio: <%= user.bio %> <br>
 The interests you share are:
 <% user.interests.each do |interest| %>
 <br><% if @user.interests.include?(interest) %>
+<% @array << interest %>
 <%= interest.name %>
 <% end %>
-<% end %>
+<% end %> <br>
+<% website=@api.get_website("#{@array[0].name}") %>
+Did you know about this event? <%= website["title"] %> on the :
+<%=website["start"][0..9]  %> in:
+<%= website["location"][0] %>
+<%= website["location"][1] %>
+
 <hr>
 <% end %>
 </ul>
