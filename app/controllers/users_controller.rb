@@ -27,8 +27,9 @@ class UsersController < ApplicationController
   
 
   def show
+    authorized_for(params[:id])
+
     @user = User.find(params[:id])
-    
     @match = @user.match
     @users = User.all
   end
@@ -38,9 +39,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
     @user=User.find(params[:id])
-    @user.update(user_params)
+    @user.update(user_params.except("categories"))
     if @user.valid?
+      user_interests.each{|x| @user.interests << Interest.find(x)}
       redirect_to user_path(@user)
     else
       flash[:errors]=@user.errors.full_messages

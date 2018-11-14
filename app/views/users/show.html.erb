@@ -1,4 +1,6 @@
-<h2>Your Profile</h2>
+
+ 
+ <h2>Your Profile</h2>
 
 
 <%=@user.first_name%>
@@ -25,8 +27,13 @@ The interests you share are:
 <%= interest.name %>
 <% end %>
 <% end %>
-<hr>
+<br>
 <% end %>
 </ul>
 <%= link_to "Send a new message to your Match", messages_url %>
 <%= link_to "See your messages", show_all_url %>
+
+
+
+<%= link_to "Edit profile", edit_user_path(@user) %>
+

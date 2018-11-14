@@ -16,21 +16,24 @@
     </head>
 
 
-
+  
+   
 
 
   <body>
 
-  <nav>
-  <a id="logo" href="/home">The Friend Zone</a>
-  
-  <% if logged_in? %>
-  <%= link_to "Logout", logout_path, method: "post" %>
-  <%else%>
-  <%=link_to "Sign up", signup_path %>
-  <%=link_to "Log in", login_path %>
-  <%end%>
-  </nav>
+ <nav>
+ <a id="logo" href="/home">The Friend Zone</a>
+ <% if logged_in? %>
+ <%= link_to "Logout", logout_path, method: "post" %>
+ <%else%>
+ <%=link_to "Sign up", signup_path %>
+ <%=link_to "Log in", login_path %>
+ <%end%>
+ <%= link_to "Browse", users_path %>
+ </nav>
+
+
 
   <%if flash[:error] %>
   <% flash[:error].each do |e| %>
@@ -38,8 +41,11 @@
     <%end%>
     <%end%>
 
-
+    <% if flash[:authorized] %>
+    <p> <%= flash[:authorized] %> </p>
+  <% end %>
 
     <%= yield %>
+  
   </body>
 </html>
