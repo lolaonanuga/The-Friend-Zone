@@ -5,12 +5,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+<%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
+   
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|IBM+Plex+Serif|Inconsolata|Montserrat|Muli|Noto+Serif+JP|Open+Sans+Condensed:300|Oswald|Questrial|Quicksand|Raleway|Roboto|Roboto+Mono|Roboto+Slab|Shadows+Into+Light" rel="stylesheet">
+    </head>
+
+
+
+
 
   <body>
 
@@ -18,10 +25,10 @@
   <a id="logo" href="/home">The Friend Zone</a>
   
   <% if logged_in? %>
-  <a><%= link_to "Logout", logout_path, method: "post" %></a>
+  <%= link_to "Logout", logout_path, method: "post" %>
   <%else%>
-  <a><%=link_to "Sign up", signup_path %></a>
-  <a><%=link_to "Log in", login_path %></a>
+  <%=link_to "Sign up", signup_path %>
+  <%=link_to "Log in", login_path %>
   <%end%>
   </nav>
 

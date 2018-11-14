@@ -1,3 +1,6 @@
+<div class="signup">
+
+
 <h2>Create Account</h2>
 
 
@@ -16,56 +19,83 @@
   </div>
 <% end %>
 
-    <%= form_for @user, controller: "users", action: "create" do |f| %>
 
-    <div class='form'>
-    <label>Username:</label>
-    <%=f.text_field :username %>
+    <%= form_for @user, controller: "users",  action: "create" do |f| %>
+
+      
+      <div class="form-group row">
+        <h3>Login details</h3>
+        <label class="col-2 col-form-label">Username:</label>
+        <div class="col-10">
+        <%=f.text_field :username, class: "form-control" %>
+        </div>
+      </div>
+    
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Password:</label>
+    <div class="col-10">
+      <%=f.password_field :password, class: "form-control" %>
+      </div>
+    </div>
+     
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Password Confirmation:</label>
+    <div class="col-10">
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
     </div>
     <br>
-
-    <div class='form'>
-    <label>Password:</label>
-    <%=f.password_field :password %>
+    <div class="form-group row">
+      <h3>About you</h3>
+      <label class="col-2 col-form-label">First Name:</label>
+      <div class="col-10">
+      <%=f.text_field :first_name, class: "form-control" %><br>
+      </div>
     </div>
 
-      <div class='form'>
-    <label>Password Confirmation:</label>
-     <%= f.password_field :password_confirmation %>
-     </div>
-
-     <div class='form'>
-    <label>First Name:</label>
-    <%=f.text_field :first_name %><br>
-</div>
-<div class='form'>
-    <label>Last Name:</label>
-    <%=f.text_field :last_name %><br>
-</div>
-<div class='form'>
-    <label>Age:</label>
-    <%= f.text_field :age%>
-    </div>
-    <div class='form'>
-    <label>Bio:</label><br>
-    <%=f.text_area :bio %><br>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Last Name:</label>
+      <div class="col-10">
+      <%=f.text_field :last_name, class: "form-control"  %><br>
+      </div>
     </div>
 
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Age:</label>
+    <div class="col-10">
+    <%= f.text_field :age, class: "form-control"%>
     </div>
+    </div>
+    
+    <div class="form-group row">
+    <label class="col-2 col-form-label">Bio:</label><br>
+    <div class="col-10">
+    <%=f.text_area :bio, class: "form-control"%><br>
+    </div>
+    </div>
+      <br>
+   
+    
+    <div class="form-group row">
+    <label class="col-2 col-form-label"l><h3>Interests</h3></label>
+    <div id="form-check">
 
-    <label>Interests</label><br>
-
-    <div id="test2"
     <% @categories.each do |category| %>
         
-
     <%= f.fields_for :categories, category do |i| %>
-        <h2><%= category.name %></h2><br><br>
-        <%=i.fields_for :user_interests do |ui| %>
+        <h3><%= category.name %></h3><br>
+        <div class="col-10">
+         <%=i.fields_for :user_interests do |ui| %>
             <%= ui.collection_check_boxes(:interest_id, category.interests, :id, :name) %>
             <%end%>
+            </div>
             <%end%>
             <%end%>
-    <%=f.submit%>
+            </div>
+            <br>  
+            
+    <%=f.submit class: "btn btn-primary"%>
     <% end %>
-  </div>
+
+
+    </div>

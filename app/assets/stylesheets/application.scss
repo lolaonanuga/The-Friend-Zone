@@ -13,29 +13,76 @@
  *= require_tree .
  *= require_self
  */
- body  {
-    background: #a9dfbf;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline
-  }
+
+
+
+ 
+
+
+ 
   
   .splash {
-   
-  background:#eafaf1;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.2), rgba(255, 114, 46, 0.3)
+    ), asset-data-url("photo-1446160657592-4782fb76fb99.jpeg");
     text-align: center;
-    padding: 50px;
     font-family: 'Poppins', sans-serif;
-  
-    width: 720px;
-    margin: 0px auto;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    & h1 {
+      color: #fff;
+      font-family: 'Amatic SC', cursive;
+      font-size: 95px;
+    }
 
-
-
+   
   }
+  
+
+
+
+
+  .signup {
+    background: rgb(248, 239, 230);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    
+    
+    color: rgb(255, 255, 255);
+    & h1 {
+      color: #fff;
+      font-family: 'Amatic SC', cursive;
+      font-size: 95px;
+    }
+
+    & p {
+      
+     
+  
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   .form{
       margin-left: 10px;
@@ -74,7 +121,7 @@
   }
 
  
-  }
+
   
   h1 {
     font-family: 'Poppins', sans-serif;
@@ -96,13 +143,13 @@
   
   p {
     font-family: 'Poppins', serif;
-    colour:#303030
+    colour:#303030;
     font-weight: 400;
     
   }
 
   .row {
-      background:#eafaf1;
+      background:#fff;
       text-align: center;
       width: 540px;
     margin: 0px auto;
@@ -152,9 +199,14 @@
 
 
   nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 50px;
-    background-color: #f9e79f;
+    background-color: #fff0;
+    position: fixed;
+    z-index: 1;
   }
 
 
@@ -184,14 +236,64 @@ nav a:hover {
   }
 
   #logo {
-
     font-family: 'Archivo Black', sans-serif;
     font-size: 30px;
     letter-spacing: -2px;
     text-shadow: 1px 1px 2px #c4c4c4;
-  /*box
-    padding-left: 20px;
-    padding-right: 40px;
-    margin-right: 10px;
-    margin-top: -20px;
-  } */
+  } 
+
+  #form-check {
+
+
+
+
+    & label {
+      font-family: 'Courier New', Courier, monospace;
+      
+    }
+  }
+
+  .button_style {
+    color: white;
+    border-radius: 3px;
+    padding: 10px 30px;
+    background-color: #38c0d6;
+    margin: auto;
+    width: 135px;
+    transition: all 0.8s ease 0s;
+    border: none;
+    & a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+  }
+
+  .button_container {
+    width: 365px;
+    margin: auto;
+    display: flex;
+
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    grid-auto-rows: 100px 100px;
+    margin: 20px;
+  }
+  
+  .user-grid {
+
+   border: 3px solid red;
+   padding: 10px 20px; 
+
+   
+
+   & a {
+     font-family: 'Montserrat', sans-serif;
+     colour: #ee7171;
+     
+   }
+  }
