@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
     @user = User.new(user_params.except("categories"))
 
-
     if @user.save
         user_interests.each{|x| @user.interests << Interest.find(x)}
       redirect_to user_path(@user)
@@ -25,9 +24,11 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end
   end
+  
 
   def show
     @user = User.find(params[:id])
+    
     @match = @user.match
     @users = User.all
   end

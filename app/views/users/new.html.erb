@@ -18,33 +18,44 @@
 
     <%= form_for @user, controller: "users", action: "create" do |f| %>
 
-    
+    <div class='form'>
     <label>Username:</label>
-    <%=f.text_field :username %><br>
+    <%=f.text_field :username %>
+    </div>
+    <br>
 
+    <div class='form'>
     <label>Password:</label>
     <%=f.password_field :password %>
+    </div>
 
+      <div class='form'>
     <label>Password Confirmation:</label>
      <%= f.password_field :password_confirmation %>
+     </div>
 
-
+     <div class='form'>
     <label>First Name:</label>
     <%=f.text_field :first_name %><br>
-
+</div>
+<div class='form'>
     <label>Last Name:</label>
     <%=f.text_field :last_name %><br>
-
+</div>
+<div class='form'>
     <label>Age:</label>
     <%= f.text_field :age%>
-
+    </div>
+    <div class='form'>
     <label>Bio:</label><br>
     <%=f.text_area :bio %><br>
+    </div>
 
-
+    </div>
 
     <label>Interests</label><br>
 
+    <div id="test2"
     <% @categories.each do |category| %>
         
 
@@ -57,4 +68,4 @@
             <%end%>
     <%=f.submit%>
     <% end %>
-  
+  </div>
