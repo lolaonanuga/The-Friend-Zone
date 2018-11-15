@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
   def new
     redirect_to user_path(current_user) if logged_in?
-      
-  
+
+
     @user = User.new
 
     @categories = Category.all
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
 
   def show
-    
+
     @user = User.find(params[:id])
     @user_view = user_view(@user.id)
     @messages = Message.all
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     @user =User.find(session[:user_id])
     @categories = Category.all
     @interests = Interest.all
+    
   end
 
   def update
@@ -50,7 +51,8 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
     @user.update(user_params.except("categories"))
     if @user.valid?
-      user_interests.each{|x| @user.interests << Interest.find(x) if !@user.interests.find(x)}
+      @user.interests=[]
+      user_interests.each{|x| @user.interests << Interest.find(x)}
       redirect_to user_path(@user)
     else
       flash[:errors] = @user.errors.full_messages
