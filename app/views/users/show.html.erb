@@ -3,14 +3,16 @@
  <h2>Your Profile</h2>
 
 
-<%=@user.first_name%>
+<%=@user.first_name%> <br>
 
 
-<%=@user.age%>
+<%=@user.age%> <br>
 
-<%=@user.bio%>
+<%=@user.bio%> <br>
 
-<%=@user.interests%>
+<%@user.interests.each do |interest|%>
+<%= interest.name %> <br>
+<% end %>
 
 
 <h2>Your Top 3 Friend Matches are:</h2>

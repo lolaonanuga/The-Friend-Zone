@@ -9,7 +9,7 @@ module UsersHelper
       now=(Time.now).strftime("%Y-%m-%d")
 # "
 #
-      url = URI.parse("https://api.predicthq.com/v1/events/?country=GB&?limit=10&?category=#{category}&active.gte=#{now}&active.lte=#{in_two_week}&?within=200km@51.5187516,-0.0836261&?sort=country")
+      url = URI.parse("https://api.predicthq.com/v1/events/?within=200km@51.5187516,-0.0836261&?country=GB&?limit=10&?category=#{category}&active.gte=#{now}&active.lte=#{in_two_week}&?sort=rank")
 
       req = Net::HTTP::Get.new(url.path)
       # req.add_field("Authorization", "Bearer #{ENV["predicthq"]}")
