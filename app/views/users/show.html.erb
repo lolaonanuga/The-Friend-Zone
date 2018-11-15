@@ -1,5 +1,5 @@
 
-<%if @user_view%> 
+<%if @user_view%>
  <h2>Your Profile</h2>
  <%else%>
  <h2><%=@user.username%></h2>
@@ -36,37 +36,34 @@
         <%= link_to "Send a message", messages_url %>
         <%= link_to "See your messages", show_all_url %>
     </div>
-        
+
     <h2>Your Matches</h2>
 
     <div class="wrapper">
 
         <%@match.each do |user|%>
-           
+
             <div class="user-grid">
 
-                 
+
                 </h2> <%= link_to "#{user.username}", user_path(user) %> </h2>
                 <h3><%= user.first_name %>, <%= user.age %></h3>
-                
-                <p> <%= user.bio %></p> 
+
+                <p> <%= user.bio %></p>
                 <h3>Shared Interests</h3>
                 <% @user.shared_interests(user).each do |interest| %>
                         <p><%= interest.name %></p>
                 <% end %>
-              
+
                 <% website=get_website("#{@user.shared_interests(user)[0].name}") %>
-                <h2> Meetup Suggestion</h2> 
+                <h2> Meetup Suggestion</h2>
                 <p><%=website["start"][0..9]  %>: <%= website["title"] %> </p>
-                
+                <%= get_website_address(website["location"][0],website["location"][1]) %>
                 <%= image_tag(google_map(website["location"][0],website["location"][1]))%>
 
             </div>
-            
+
         <% end %>
     </div>
 
 </div>
-
-
-

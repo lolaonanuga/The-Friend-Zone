@@ -12,8 +12,7 @@ module UsersHelper
       url = URI.parse("https://api.predicthq.com/v1/events/?within=200km@51.5187516,-0.0836261&?country=GB&?limit=10&?category=#{category}&active.gte=#{now}&active.lte=#{in_two_week}&?sort=rank")
 
       req = Net::HTTP::Get.new(url.path)
-      # req.add_field("Authorization", "Bearer #{ENV["predicthq"]}")
-      req.add_field("Authorization", "Bearer lpQGM3yG9TZqoki03Z40pyhge78IPV")
+      req.add_field("Authorization", "Bearer #{ENV["predicthq"]}")
 
       res = Net::HTTP.new(url.host, url.port)
       res.use_ssl = true
@@ -24,22 +23,21 @@ module UsersHelper
     end
 
 
-    def title(category)
-      self.get_website(category)["title"]
-    end
-
-    def when(category)
-      self.get_website(category)["start"]
-    end
-
-    def where(category)
-      self.get_website(category)["location"]
-    end
-
 
     def google_map(c1,c2)
       "https://maps.googleapis.com/maps/api/staticmap?center=#{c2},#{c1}&zoom=17&size=600x300&maptype=roadmap&markers=color:red%7Clabel:C%7C#{c1},#{c2}&key=AIzaSyDSCn98mXt3dzzS_TF_CtqQhLzYU0Cx5Mc"
     end
+
+
+
+    def get_website_address(c1,c2)
+      url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{c2},#{c1}&key=AIzaSyDSCn98mXt3dzzS_TF_CtqQhLzYU0Cx5Mc"
+        uri = URI.parse(url)
+        response = Net::HTTP.get_response(uri)
+
+      JSON.parse(response.body)["results"][0]["formatted_address"]
+    end
+
 
 
 end
