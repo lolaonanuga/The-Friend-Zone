@@ -30,32 +30,35 @@ class UsersController < ApplicationController
   
 
   def show
-    authorized_for(params[:id])
-
+    
     @user = User.find(params[:id])
+    @user_view = user_view(@user.id)
+    # @api = Api.new
     @match = @user.match
     @users = User.all
   end
 
   def edit
-    @user=User.find(params[:id])
+    @user =User.find(session[:user_id])
+    @categories = Category.all
+    @interests = Interest.all
   end
 
   def update
     user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
-    @user=User.find(params[:id])
+    @user = User.find(session[:user_id])
     @user.update(user_params.except("categories"))
     if @user.valid?
-      user_interests.each{|x| @user.interests << Interest.find(x)}
+      user_interests.each{|x| @user.interests << Interest.find(x) if !@user.interests.find(x)}
       redirect_to user_path(@user)
     else
-      flash[:errors]=@user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
       redirect_to edit_user_path(@user)
     end
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    User.find(session[:user_id]).destroy
     redirect_to '/'
   end
 

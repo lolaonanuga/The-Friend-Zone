@@ -26,7 +26,9 @@ def authorized_for(user_id)
     end
   end
 
-
+  def user_view(user_id)
+    current_user.id == user_id.to_i
+  end
 
 
 end

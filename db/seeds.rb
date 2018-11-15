@@ -1,5 +1,7 @@
-Category.delete_all
-Interest.delete_all
+Category.destroy_all
+Interest.destroy_all
+User.destroy_all
+UserInterest.destroy_all
 
 entertainment = Category.create(name: "Entertainment")
 sport = Category.create(name: "Sport & Wellness")

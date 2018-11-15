@@ -30,9 +30,9 @@
  <%=link_to "Sign up", signup_path %>
  <%=link_to "Log in", login_path %>
  <%end%>
+ <%=link_to "Your Profile", user_path(session[:user_id]) %>
  <%= link_to "Browse", users_path %>
  </nav>
-
 
 
   <%if flash[:error] %>

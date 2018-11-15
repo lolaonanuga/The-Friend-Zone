@@ -18,5 +18,17 @@ class User < ApplicationRecord
         return array[1..3]
       end
 
+    def shared_interests(user)
+        array = []
+        user.interests.each do |interest| 
+            if self.interests.include?(interest)
+                array << interest 
+            end
+        end
+        array
+    end
+
+    
+
 
 end

@@ -1,39 +1,64 @@
 
- 
+<%if @user_view%> 
  <h2>Your Profile</h2>
+ <%else%>
+ <h2><%=@user.username%></h2>
+ <%end%>
 
 
-<%=@user.first_name%>
+<Br>
 
 
-<%=@user.age%>
-
+<%=@user.first_name%>, <%=@user.age%>
+<br>
 <%=@user.bio%>
 
-<%=@user.interests%>
+<h3>Interests</h3>
+<%@user.interests.each do |interest| %>
+<%=interest.name%><br>
+<%end%>
 
 
-<h2>Your Top 3 Friend Matches are:</h2>
 
-<ul>
-<% @match.each do |user| %>
-Username: <%=  user.username %> <br>
-Name: <%= user.first_name %> <br>
-Age: <%= user.age %> <br>
-Bio: <%= user.bio %> <br>
-The interests you share are:
-<% user.interests.each do |interest| %>
-<br><% if @user.interests.include?(interest) %>
-<%= interest.name %>
-<% end %>
-<% end %>
-<br>
-<% end %>
-</ul>
-<%= link_to "Send a new message to your Match", messages_url %>
-<%= link_to "See your messages", show_all_url %>
-
+<%if @user_view%>
+<div class="private-show-section">
+    <%else%>
+<div class="private-show-section", style="display: none;">
+<%end%>
 
 
 <%= link_to "Edit profile", edit_user_path(@user) %>
+
+    <div class="message-links">
+        <h3>Messages</h3>
+        <%= link_to "Send a message", messages_url %>
+        <%= link_to "See your messages", show_all_url %>
+    </div>
+        
+    <h2>Your Matches</h2>
+
+    <div class="wrapper">
+
+        <%@match.each do |user|%>
+            <%= link_to user_path(user), :action => 'go' do %>
+            <div class="user-grid">
+
+                 
+                </h2> <%=  user.username %> </h2>
+                <h3><%= user.first_name %>, <%= user.age %></h3>
+                
+                <p> <%= user.bio %></p> 
+                <h3>Shared Interests</h3>
+                <% @user.shared_interests(user).each do |interest| %>
+                        <p><%= interest.name %></p>
+                <% end %>
+              
+            </div>
+            <% end %>
+        <% end %>
+    </div>
+
+</div>
+
+
 
