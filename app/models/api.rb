@@ -34,5 +34,5 @@ class Api < ApplicationRecord
       self.get_website(category)["location"]
     end
 
-
+  
 end

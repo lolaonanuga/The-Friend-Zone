@@ -32,7 +32,7 @@ Did you know about this event? <%= website["title"] %> on the :
 <%=website["start"][0..9]  %> in:
 <%= website["location"][0] %>
 <%= website["location"][1] %>
-
+<%= image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{website["location"][0]},#{website["location"][1]}&key=AIzaSyDSCn98mXt3dzzS_TF_CtqQhLzYU0Cx5Mc") %>
 <hr>
 <% end %>
 </ul>
