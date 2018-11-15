@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   end
 
   def new
+    redirect_to user_path(current_user) if logged_in?
+      
+  
     @user = User.new
 
     @categories = Category.all
