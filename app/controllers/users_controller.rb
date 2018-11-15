@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @user_view = user_view(@user.id)
+    @messages = Message.all
     # @api = Api.new
     @match = @user.match
     @users = User.all

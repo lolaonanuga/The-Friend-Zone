@@ -1,24 +1,56 @@
+<div class="page">
 
 <%if @user_view%>
- <h2>Your Profile</h2>
- <%else%>
- <h2><%=@user.username%></h2>
- <%end%>
-
-
-<Br>
-
-
-<%=@user.first_name%>, <%=@user.age%>
-<br>
-<%=@user.bio%>
-
-<h3>Interests</h3>
-<%@user.interests.each do |interest| %>
-<%=interest.name%><br>
+<h2>Your Profile</h2>
+<%= link_to "Edit profile", edit_user_path(@user) %>
+<%else%>
+<h2><%=@user.username%></h2>
 <%end%>
 
 
+<div class="container">
+
+<div class="profile">
+
+<h3><%=@user.first_name%>, <%=@user.age%> </h3>
+
+<p><%=@user.bio%></p>
+
+<h3>Interests</h3>
+<ul></ul>
+<%@user.interests.each do |interest| %>
+<li><%=interest.name%></li>
+
+<%end%>
+</div>
+
+
+
+
+<%if @user_view%>
+<div class="message-section">
+    <%else%>
+<div class="message-section", style="display: none;">
+<%end%>
+
+
+
+
+<h3>Inbox</h3>
+<% @messages.each do |message| %>
+<% if message.receiver_id==@user.id %>
+<h4>From: <%= link_to "#{message.user.username}", user_path(message.user) %></h4>
+<h4><at :<%= message.created_at.strftime("%Y-%b-%d %I:%M%p") %>/h4>
+<p><%= message.content %></p> <br>
+<hr>
+<% end %>
+<% end %>
+
+
+<%= link_to "Send a message", messages_url %>
+
+</div>
+</div>
 
 
 
@@ -29,6 +61,7 @@
 <%end%>
 
 
+<<<<<<< HEAD
 <%= link_to "Edit profile", edit_user_path(@user) %>
 
     <div class="message-links">
@@ -37,6 +70,9 @@
         <%= link_to "See your messages", show_all_url %>
     </div>
 
+=======
+
+>>>>>>> cd5d7a843ec27ea2ed785f8d7b1f7993eaf4838b
     <h2>Your Matches</h2>
 
     <div class="wrapper">
@@ -58,8 +94,13 @@
                 <% website=get_website("#{@user.shared_interests(user)[0].name}") %>
                 <h2> Meetup Suggestion</h2>
                 <p><%=website["start"][0..9]  %>: <%= website["title"] %> </p>
+<<<<<<< HEAD
                 <%= get_website_address(website["location"][0],website["location"][1]) %>
                 <%= image_tag(google_map(website["location"][0],website["location"][1]))%>
+=======
+
+                <%= image_tag(google_map(website["location"][0],website["location"][1]), :style => "max-width: 100%")%>
+>>>>>>> cd5d7a843ec27ea2ed785f8d7b1f7993eaf4838b
 
             </div>
 
@@ -67,3 +108,11 @@
     </div>
 
 </div>
+<<<<<<< HEAD
+=======
+
+
+
+</div>
+
+>>>>>>> cd5d7a843ec27ea2ed785f8d7b1f7993eaf4838b
