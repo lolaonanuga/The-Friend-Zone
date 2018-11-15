@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FriendFinder</title>
+    <title>The Friend Zone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+<%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+
+   
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|IBM+Plex+Serif|Inconsolata|Montserrat|Muli|Noto+Serif+JP|Open+Sans+Condensed:300|Oswald|Questrial|Quicksand|Raleway|Roboto|Roboto+Mono|Roboto+Slab|Shadows+Into+Light" rel="stylesheet">
+    </head>
+
+
+  
+   
+
 
   <body>
+
+ <nav>
+ <a id="logo" href="/home">The Friend Zone</a>
+ <%= link_to "Browse", users_path %>
+ <% if logged_in? %>
+ <%=link_to "Your Profile", user_path(session[:user_id]) %>
+ <%= link_to "Logout", logout_path, method: "post" %>
+ <%else%>
+ <%=link_to "Log in", login_path %>
+ <%=link_to "Sign up", signup_path %>
+
+ <%end%>
+ </nav>
+
+
+  <%if flash[:error] %>
+  <% flash[:error].each do |e| %>
+    <li style = "color:red"><%=e%></li>
+    <%end%>
+    <%end%>
+
+    <% if flash[:authorized] %>
+    <p> <%= flash[:authorized] %> </p>
+  <% end %>
+
     <%= yield %>
+  
   </body>
 </html>

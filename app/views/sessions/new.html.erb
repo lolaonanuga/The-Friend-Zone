@@ -1,0 +1,51 @@
+
+
+
+
+<% if flash[:error] %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(flash[:error].count, "error") %>
+      prohibited your profile from being saved:
+    </h2>
+    <ul>
+    <% flash[:error].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<div class="page">
+
+
+
+<div class="row1">
+<% provide(:title, "Sign in") %>
+<div id="signin">
+
+  <div class="span 6 offset 3">
+  <h3>Sign in</h3>
+    <%= form_tag sessions_path do %>
+
+      <span class="form-label">Username:</span>
+      <%= text_field_tag :username, params[:username] %>
+        <br>
+        <br>
+        <span class="form-label">Password:</span>
+      <%= password_field_tag :password %>
+        <br>
+        <br>
+      <%= submit_tag "Sign in", class: "btn btn-large btn-primary" %>
+    
+    <% end %>
+
+    <p>New User? <%= link_to "Sign Up Now", new_user_path %> </p>
+  </div>
+ 
+  </div>
+  
+</div>
+
+</div>
