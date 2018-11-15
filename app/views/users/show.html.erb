@@ -1,24 +1,57 @@
+<div class="page">
 
 <%if @user_view%> 
- <h2>Your Profile</h2>
- <%else%>
- <h2><%=@user.username%></h2>
- <%end%>
-
-
-<Br>
-
-
-<%=@user.first_name%>, <%=@user.age%>
-<br>
-<%=@user.bio%>
-
-<h3>Interests</h3>
-<%@user.interests.each do |interest| %>
-<%=interest.name%><br>
+<h2>Your Profile</h2>
+<%= link_to "Edit profile", edit_user_path(@user) %>
+<%else%>
+<h2><%=@user.username%></h2>
 <%end%>
 
 
+<div class="container">
+
+<div class="profile">
+
+<h3><%=@user.first_name%>, <%=@user.age%> </h3>
+
+<p><%=@user.bio%></p>
+
+<h3>Interests</h3>
+<ul></ul>
+<%@user.interests.each do |interest| %>
+<li><%=interest.name%></li>
+
+<%end%>
+</ul>
+</div>
+
+
+
+
+<%if @user_view%>
+<div class="message-section">
+    <%else%>
+<div class="message-section", style="display: none;">
+<%end%>
+ 
+
+      
+ 
+<h3>Inbox</h3> 
+<% @messages.each do |message| %>
+<% if message.receiver_id==@user.id %>
+<h4>From: <%= link_to "#{message.user.username}", user_path(message.user) %></h4>
+<h4><at :<%= message.created_at.strftime("%Y-%b-%d %I:%M%p") %>/h4>
+<p><%= message.content %></p> <br>
+<hr>
+<% end %>
+<% end %>
+
+
+<%= link_to "Send a message", messages_url %>
+
+</div>
+</div>
 
 
 
@@ -29,13 +62,6 @@
 <%end%>
 
 
-<%= link_to "Edit profile", edit_user_path(@user) %>
-
-    <div class="message-links">
-        <h3>Messages</h3>
-        <%= link_to "Send a message", messages_url %>
-        <%= link_to "See your messages", show_all_url %>
-    </div>
         
     <h2>Your Matches</h2>
 
@@ -59,7 +85,7 @@
                 <h2> Meetup Suggestion</h2> 
                 <p><%=website["start"][0..9]  %>: <%= website["title"] %> </p>
                 
-                <%= image_tag(google_map(website["location"][0],website["location"][1]))%>
+                <%= image_tag(google_map(website["location"][0],website["location"][1]), :style => "max-width: 100%")%>
 
             </div>
             
@@ -69,4 +95,6 @@
 </div>
 
 
+
+</div>
 
