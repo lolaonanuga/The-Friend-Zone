@@ -1,4 +1,6 @@
-<h2>Your Profile</h2>
+
+
+ <h2>Your Profile</h2>
 
 
 <%=@user.first_name%>
@@ -27,14 +29,16 @@ The interests you share are:
 <%= interest.name %>
 <% end %>
 <% end %> <br>
-<% website=@api.get_website("#{@array[0].name}") %>
+<% website=get_website("#{@array[0].name}") %>
 Did you know about this event? <%= website["title"] %> on the :
 <%=website["start"][0..9]  %> in:
-<%= website["location"][0] %>
-<%= website["location"][1] %>
-<%= image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{website["location"][0]},#{website["location"][1]}&key=AIzaSyDSCn98mXt3dzzS_TF_CtqQhLzYU0Cx5Mc") %>
+<%= image_tag(google_map(website["location"][0],website["location"][1])) %>
 <hr>
 <% end %>
 </ul>
 <%= link_to "Send a new message to your Match", messages_url %>
 <%= link_to "See your messages", show_all_url %>
+
+
+
+<%= link_to "Edit profile", edit_user_path(@user) %>

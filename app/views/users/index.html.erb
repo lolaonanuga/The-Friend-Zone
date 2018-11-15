@@ -1,4 +1,16 @@
-<h1>All Users</h1>
+
+ 
+
+<div class="users">
+<h1>Find Friends</h1>
+<div class="wrapper">
 <% @users.each do |user| %>
-<%= link_to user.username, user_path(user) %> <br>
+    <div class="user-grid">
+    <%= link_to user.username, user_path(user) %><br>
+    <p><%= user.first_name %>, <%= user.age %><br></p>
+ 
+    </div>
 <% end %>
+</div>
+
+</div>

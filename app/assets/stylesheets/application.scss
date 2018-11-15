@@ -1,0 +1,325 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+ 
+
+
+ 
+  
+  .splash {
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.2), rgba(255, 114, 46, 0.3)
+    ), asset-data-url("photo-1446160657592-4782fb76fb99.jpeg");
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    & h1 {
+      color: #fff;
+      font-family: 'Amatic SC', cursive;
+      font-size: 95px;
+    }
+
+   
+  }
+  
+
+
+
+
+  .signup-body {
+    background:#38c0d6;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    
+    
+ 
+    & h1 {
+      color: #fff;
+      font-family: 'Amatic SC', cursive;
+      font-size: 95px;
+    }
+
+    & p {
+      
+     
+  
+    }
+  }
+
+
+
+
+
+a {
+
+  color: #ee7171;
+
+}
+
+
+
+  .form{
+      margin-left: 10px;
+      font-weight: bold;
+      padding: 10px 20px;
+  }
+
+  #test2{
+      width: 400px;
+      padding-left: 10px;
+
+  }
+
+  form {
+      padding: 10px 20px;
+
+  }
+
+
+  p {font-family: 'Poppins', sans-serif;}
+  
+  .head {
+  position: absolute;
+  background: rgba(237, 232, 232, 0.5);
+  margin: 200px 200px 200px 200px;
+  padding:50px 20px 50px 20px;
+   
+  }
+  
+  .title {
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    color: #303030;
+    font-size: 75px;
+   
+  }
+
+ 
+
+  
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size:50px;
+   color:#303030;
+  }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size:30px;
+   color:#303030;
+  }
+
+  h3 {
+    font-family:'Questrial', sans-serif;
+    font-size:20px;
+   color:#303030;
+  }
+  
+  p {
+    font-family: 'Poppins', serif;
+    colour:#f0aeae;
+    font-weight: 400;
+    
+  }
+
+  .row {
+      background:#fff;
+      text-align: center;
+      width: 540px;
+    margin: 0px auto;
+    padding: 20px;
+    
+  }
+  
+  .row1 {
+    background:#fff;
+    
+    width: 540px;
+  margin: 0px auto;
+  padding: 20px;
+  
+}
+  
+
+  
+  #footer {
+    background: black;
+    width: 100%;
+    height: 100px;
+  }
+  
+  .btn {
+   
+    color: white;
+    border: 1px solid white;
+    padding: 10px 30px;
+    background-color: #38c0d6;
+    margin: auto;
+    width: 30%;
+    transition: all 0.3s ease 0s;
+    
+  }
+  
+  btn:hover {
+    background:#f9e79f;
+    color:black;
+    
+  }
+  
+  .list {
+    
+    margin-left: 5%;
+  }
+  
+  .list2 {
+    font-family: 'zilla slab', serif;
+    font-weight: 400;
+    
+  }
+
+
+
+  nav {
+    display: flex;
+    
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #fff0;
+    padding-right: 40%;
+    // position: fixed;
+    z-index: 1;
+    
+  }
+
+
+
+  nav a {
+    display: block;
+    
+   
+      
+
+    font-family: 'raleway', sans-serif;
+    font-size: 20px;
+    color: rgb(248, 141, 79);
+
+    
+  
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    
+    text-decoration: none;
+    
+ }
+
+nav a:hover {
+    background-color: #c7f1fa;
+  }
+
+  #logo {
+    font-family: 'poppins', sans-serif;
+    font-size: 30px;
+    
+    
+  } 
+
+  #form-check {
+
+
+
+
+    & label {
+      font-family: 'Courier New', Courier, monospace;
+      
+    }
+  }
+
+  .button_style {
+    color: white;
+    border-radius: 3px;
+    padding: 10px 30px;
+    background-color: #38c0d6;
+    margin: auto;
+    width: 135px;
+    transition: all 0.8s ease 0s;
+    border: none;
+    & a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+  }
+
+  .button_container {
+    width: 365px;
+    margin: auto;
+    display: flex;
+
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    grid-auto-rows: 100px 100px;
+    margin: 20px;
+  }
+  
+  .user-grid {
+
+   
+   background: #38c0d6;
+   padding: 10px 20px; 
+
+   & p {
+   colou: white;
+   }
+   
+
+   & a {
+     font-family: 'Montserrat', sans-serif;
+     colour: #ee7171;
+     
+   }
+  }
+
+
+  #signin {
+    margin-top: 30%;
+  }
+
+  .form-label {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+
+  
+.users {
+
+  margin-top: 5%;
+}
