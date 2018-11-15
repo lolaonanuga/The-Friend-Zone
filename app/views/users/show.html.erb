@@ -20,6 +20,8 @@
 
 
 
+
+
 <%if @user_view%>
 <div class="private-show-section">
     <%else%>
@@ -40,11 +42,11 @@
     <div class="wrapper">
 
         <%@match.each do |user|%>
-            <%= link_to user_path(user), :action => 'go' do %>
+           
             <div class="user-grid">
 
                  
-                </h2> <%=  user.username %> </h2>
+                </h2> <%= link_to "#{user.username}", user_path(user) %> </h2>
                 <h3><%= user.first_name %>, <%= user.age %></h3>
                 
                 <p> <%= user.bio %></p> 
@@ -53,8 +55,14 @@
                         <p><%= interest.name %></p>
                 <% end %>
               
+                <% website=get_website("#{@user.shared_interests(user)[0].name}") %>
+                <h2> Meetup Suggestion</h2> 
+                <p><%=website["start"][0..9]  %>: <%= website["title"] %> </p>
+                
+                <%= image_tag(google_map(website["location"][0],website["location"][1]))%>
+
             </div>
-            <% end %>
+            
         <% end %>
     </div>
 

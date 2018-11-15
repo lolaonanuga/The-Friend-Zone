@@ -24,14 +24,15 @@
 
  <nav>
  <a id="logo" href="/home">The Friend Zone</a>
+ <%= link_to "Browse", users_path %>
  <% if logged_in? %>
+ <%=link_to "Your Profile", user_path(session[:user_id]) %>
  <%= link_to "Logout", logout_path, method: "post" %>
  <%else%>
- <%=link_to "Sign up", signup_path %>
  <%=link_to "Log in", login_path %>
+ <%=link_to "Sign up", signup_path %>
+
  <%end%>
- <%=link_to "Your Profile", user_path(session[:user_id]) %>
- <%= link_to "Browse", users_path %>
  </nav>
 
 

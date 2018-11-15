@@ -1,9 +1,11 @@
 <%= form_for @message do |f| %>
-  <%= f.label :content %>
-  <%= f.text_field :content %> <br>
+  
 <%= f.label :send_to %>
   <%= f.collection_select(:receiver_id, @user.match, :id, :username) %>
   <%= f.hidden_field :user_id, :value => @user.id %>
+<br>
+  <%= f.label :content %>
+  <%= f.text_area :content %> 
 
 
   <%= f.submit %>

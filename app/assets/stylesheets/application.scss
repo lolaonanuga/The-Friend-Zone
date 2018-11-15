@@ -295,15 +295,21 @@ nav a:hover {
    
    background: #38c0d6;
    padding: 10px 20px; 
-
+            
    & p {
    color: white;
    }
-   
+
+   & h2 {
+
+    text-decoration: underline;
+    text-decoration-color: #ee7171;
+   }
 
    & a {
      font-family: 'Montserrat', sans-serif;
      colour: #ee7171;
+     
      
    }
   }
