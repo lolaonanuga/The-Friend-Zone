@@ -1,7 +1,7 @@
 <div class="page">
 
 <%if @user_view%> 
-<h2>Your Profile</h2>
+<h2>Dashboard</h2>
 <%= link_to "Edit profile", edit_user_path(@user) %>
 <%else%>
 <h2><%=@user.username%></h2>
@@ -17,7 +17,7 @@
 <p><%=@user.bio%></p>
 
 <h3>Interests</h3>
-<ul></ul>
+<ul>
 <%@user.interests.each do |interest| %>
 <li><%=interest.name%></li>
 
@@ -48,7 +48,9 @@
 <% end %>
 
 
+<%= link_to "View all messages", show_all_url %><br>
 <%= link_to "Send a message", messages_url %>
+
 
 </div>
 </div>
