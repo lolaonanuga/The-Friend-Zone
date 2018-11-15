@@ -61,7 +61,6 @@
 <%end%>
 
 
-<<<<<<< HEAD
 <%= link_to "Edit profile", edit_user_path(@user) %>
 
     <div class="message-links">
@@ -70,9 +69,6 @@
         <%= link_to "See your messages", show_all_url %>
     </div>
 
-=======
-
->>>>>>> cd5d7a843ec27ea2ed785f8d7b1f7993eaf4838b
     <h2>Your Matches</h2>
 
     <div class="wrapper">
@@ -94,13 +90,8 @@
                 <% website=get_website("#{@user.shared_interests(user)[0].name}") %>
                 <h2> Meetup Suggestion</h2>
                 <p><%=website["start"][0..9]  %>: <%= website["title"] %> </p>
-<<<<<<< HEAD
                 <%= get_website_address(website["location"][0],website["location"][1]) %>
                 <%= image_tag(google_map(website["location"][0],website["location"][1]))%>
-=======
-
-                <%= image_tag(google_map(website["location"][0],website["location"][1]), :style => "max-width: 100%")%>
->>>>>>> cd5d7a843ec27ea2ed785f8d7b1f7993eaf4838b
 
             </div>
 
@@ -108,11 +99,7 @@
     </div>
 
 </div>
-<<<<<<< HEAD
-=======
 
 
 
 </div>
-
->>>>>>> cd5d7a843ec27ea2ed785f8d7b1f7993eaf4838b
