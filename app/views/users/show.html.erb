@@ -1,11 +1,12 @@
 <div class="page">
 
-<%if @user_view%>
-<h2>Your Profile</h2>
-<%= link_to "Edit profile", edit_user_path(@user) %>
-<%else%>
-<h2><%=@user.username%></h2>
-<%end%>
+    <span class="blurb">
+        <%if @user_view%>
+            <h2>Your Profile</h2>
+            <%= link_to "Edit profile", edit_user_path(@user) %>
+        <%else%>
+            <h2><%=@user.username%></h2>
+        <%end%>
 
 
 <div class="container">
@@ -13,7 +14,9 @@
 <div class="profile">
 
 <h3><%=@user.first_name%>, <%=@user.age%> </h3>
+<%= image_tag(@user.picture_url, :alt => @user.username) %>
 
+</span>
 <p><%=@user.bio%></p>
 
 <h3>Interests</h3>
@@ -47,7 +50,12 @@
 <% end %>
 
 
-<%= link_to "Send a message", messages_url %>
+<div class="message-links">
+        <h3>Messages</h3>
+        <%= link_to "See all messages", show_all_url %><br>
+        <%= link_to "Send a message", messages_url %>
+       
+    </div>
 
 </div>
 </div>
@@ -61,13 +69,9 @@
 <%end%>
 
 
-<%= link_to "Edit profile", edit_user_path(@user) %>
 
-    <div class="message-links">
-        <h3>Messages</h3>
-        <%= link_to "Send a message", messages_url %>
-        <%= link_to "See your messages", show_all_url %>
-    </div>
+
+    
 
     <h2>Your Matches</h2>
 
@@ -83,15 +87,18 @@
 
                 <p> <%= user.bio %></p>
                 <h3>Shared Interests</h3>
+                <ul></ul>
                 <% @user.shared_interests(user).each do |interest| %>
-                        <p><%= interest.name %></p>
+                        <li><%= interest.name %></li>
                 <% end %>
+            </ul>
 
-                <% website=get_website("#{@user.shared_interests(user)[0].name}") %>
+                <% website=get_website("#{@user.shared_interests(user)[rand(@user.shared_interests(user).size)].name}") %>
                 <h2> Meetup Suggestion</h2>
                 <p><%=website["start"][0..9]  %>: <%= website["title"] %> </p>
-                <%= get_website_address(website["location"][0],website["location"][1]) %>
-                <%= image_tag(google_map(website["location"][0],website["location"][1]))%>
+                <p><%= get_website_address(website["location"][0],website["location"][1]) %></p>
+                <%= image_tag(google_map(website["location"][0],website["location"][1]), :style => "max-width: 100%")%>
+
 
             </div>
 

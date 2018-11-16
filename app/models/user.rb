@@ -8,7 +8,8 @@ class User < ApplicationRecord
     validates :username, uniqueness: true, presence: true
     has_secure_password
 
-
+    mount_uploader :picture, PictureUploader
+   
     
 
     def match

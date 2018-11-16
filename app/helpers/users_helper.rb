@@ -12,7 +12,7 @@ module UsersHelper
       url = URI.parse("https://api.predicthq.com/v1/events/?within=200km@51.5187516,-0.0836261&?country=GB&?limit=10&?category=#{category}&active.gte=#{now}&active.lte=#{in_two_week}&?sort=rank")
 
       req = Net::HTTP::Get.new(url.path)
-      req.add_field("Authorization", "Bearer #{ENV["predicthq"]}")
+      req.add_field("Authorization", "Bearer lpQGM3yG9TZqoki03Z40pyhge78IPV")
 
       res = Net::HTTP.new(url.host, url.port)
       res.use_ssl = true

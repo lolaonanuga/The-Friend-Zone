@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
+
     user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
     @user = User.new(user_params.except("categories"))
 
@@ -72,6 +73,8 @@ class UsersController < ApplicationController
         :username,
         :password,
         :password_confirmation,
+        :picture_cache,
+        :picture,
         :first_name,
         :last_name,
         :bio,

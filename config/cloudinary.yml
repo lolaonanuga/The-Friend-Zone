@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dbbyxtyo7
+  api_key: '417159997577665'
+  api_secret: 8dK6Xo5OuO30_8akcYE8tOBT60Q
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dbbyxtyo7
+  api_key: '417159997577665'
+  api_secret: 8dK6Xo5OuO30_8akcYE8tOBT60Q
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dbbyxtyo7
+  api_key: '417159997577665'
+  api_secret: 8dK6Xo5OuO30_8akcYE8tOBT60Q
+  enhance_image_tag: true
+  static_image_support: false

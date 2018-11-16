@@ -22,6 +22,10 @@ gem 'json'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'figaro'
+gem 'carrierwave'
+gem 'cloudinary'
+
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
