@@ -1,8 +1,8 @@
 <div class="page">
 
-    <span class="blurb">
+    
         <%if @user_view%>
-            <h2>Your Profile</h2>
+            <h2>Dashboard</h2>
             <%= link_to "Edit profile", edit_user_path(@user) %>
         <%else%>
             <h2><%=@user.username%></h2>
@@ -14,17 +14,22 @@
 <div class="profile">
 
 <h3><%=@user.first_name%>, <%=@user.age%> </h3>
-<%= image_tag(@user.picture_url, :alt => @user.username) %>
 
-</span>
+<% if @user.picture %>
+<%= image_tag(@user.picture_url(:standard), :alt => @user.username) %>
+<%else%>
+<p>No photo</p>
+<%end%>
+
 <p><%=@user.bio%></p>
 
 <h3>Interests</h3>
-<ul></ul>
+<ul>
 <%@user.interests.each do |interest| %>
 <li><%=interest.name%></li>
 
 <%end%>
+</li>
 </div>
 
 
@@ -76,6 +81,9 @@
     <h2>Your Matches</h2>
 
     <div class="wrapper">
+        <% if @match == nil || @match.size == 0 %>
+        <p> You have no matches! Edit your profile and select some more interests.</p>
+        <%else%>
 
         <%@match.each do |user|%>
 
@@ -103,6 +111,7 @@
             </div>
 
         <% end %>
+        <%end%>
     </div>
 
 </div>

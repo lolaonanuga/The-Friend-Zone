@@ -22,7 +22,8 @@ class UsersController < ApplicationController
 
     if @user.save
         user_interests.each{|x| @user.interests << Interest.find(x)}
-      redirect_to user_path(@user)
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
     else
       flash[:error] = @user.errors.full_messages
       redirect_to new_user_path
@@ -63,6 +64,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(session[:user_id]).destroy
+    session[:user_id] = nil
     redirect_to '/'
   end
 

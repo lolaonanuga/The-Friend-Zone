@@ -6,7 +6,13 @@
 <div class="wrapper">
 <% @users.each do |user| %>
     <div class="user-grid">
-    <%= link_to user.username, user_path(user) %><br>
+    <%= link_to user.username, user_path(user) %><br><br>
+
+    <%if user.picture %>
+        <%= image_tag(user.picture_url(:thumbnail), :alt => user.username) %>
+        <%else%>
+        <p>No photo</p>
+        <%end%>
     <p><%= user.first_name %>, <%= user.age %><br></p>
  
     </div>
