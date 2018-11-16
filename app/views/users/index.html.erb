@@ -6,7 +6,15 @@
 <div class="wrapper">
 <% @users.each do |user| %>
     <div class="user-grid">
-    <%= link_to user.username, user_path(user) %><br>
+    <%= link_to user.username, user_path(user) %><br><br>
+
+    <% if user.picture_url == nil %>
+    <%= image_tag("636705502595800000.png", size: "100x100", :class => "avatar", alt: "No photo") %>
+    <% else %>
+        <%= image_tag(user.picture_url(:thumbnail), :alt => user.username, :class => "avatar" ) %>
+    <% end %>
+
+
     <p><%= user.first_name %>, <%= user.age %><br></p>
  
     </div>

@@ -21,6 +21,10 @@ gem 'json'
 # gem 'mini_racer', platforms: :ruby
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'figaro'
+gem 'carrierwave'
+gem 'cloudinary'
+
 
 
 # Use CoffeeScript for .coffee assets and views

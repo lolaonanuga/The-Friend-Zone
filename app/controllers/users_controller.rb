@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  
 
   def index
     @users=User.all
@@ -16,12 +16,14 @@ class UsersController < ApplicationController
   end
 
   def create
+
     user_interests = user_params["categories"]["user_interests"]["interest_id"].delete_if{|x| x.length < 1}.map{|x| x.to_i}
     @user = User.new(user_params.except("categories"))
 
     if @user.save
         user_interests.each{|x| @user.interests << Interest.find(x)}
-      redirect_to user_path(@user)
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
     else
       flash[:error] = @user.errors.full_messages
       redirect_to new_user_path
@@ -62,6 +64,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(session[:user_id]).destroy
+    session[:user_id] = nil
     redirect_to '/'
   end
 
@@ -72,6 +75,8 @@ class UsersController < ApplicationController
         :username,
         :password,
         :password_confirmation,
+        :picture_cache,
+        :picture,
         :first_name,
         :last_name,
         :bio,
