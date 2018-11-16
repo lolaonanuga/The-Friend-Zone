@@ -362,13 +362,16 @@ display: flex;
 
 & .profile {
 
-  flex-grow: 1; }
+  flex: 1;
+margin-right: 5%; }
 
 
   & .message-section {
 
-    flex-grow: 1;
+    flex: 1;
   }
+
+
 
   & .inbox {
     flex-grow: 1;
