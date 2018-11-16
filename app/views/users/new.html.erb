@@ -82,27 +82,27 @@
     <div class="form-group row">
     <label class="col-2 col-form-label">Age:</label>
     <div class="col-10">
-    <%= f.text_field :age, class: "form-control"%>
+    <%= f.text_field :age, class: "form-control" %>
     </div>
     </div>
     
     <div class="form-group row">
     <label class="col-2 col-form-label">Bio:</label><br>
     <div class="col-10">
-    <%=f.text_area :bio, class: "form-control"%><br>
+    <%=f.text_area :bio, class: "form-control", :rows => 10, style: 'width:50%;'%><br>
     </div>
     </div>
       <br>
    
     
     <div class="form-group row">
-    <label class="col-2 col-form-label"l><h3>Interests</h3></label>
+    <label class="col-2 col-form-label"l><h3>Interests</h3></label><br>
     <div id="form-check">
 
     <% @categories.each do |category| %>
         
     <%= f.fields_for :categories, category do |i| %>
-        <h3><%= category.name %></h3>
+        <h4><%= category.name %></h4>
         <div class="col-10">
          <%=i.fields_for :user_interests do |ui| %>
             <%= ui.collection_check_boxes(:interest_id, category.interests, :id, :name) %>
