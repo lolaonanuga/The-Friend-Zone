@@ -15,11 +15,14 @@
 
 <h3><%=@user.first_name%>, <%=@user.age%> </h3>
 
-<% if @user.picture %>
-<%= image_tag(@user.picture_url(:standard), :alt => @user.username) %>
-<%else%>
-<p>No photo</p>
-<%end%>
+
+<% if @user.picture_url==nil %>
+<%= image_tag("636705502595800000.png", size: "150x150", :class => "avatar", alt: "No photo") %>
+    
+<% else %>
+    <%= image_tag(@user.picture_url(:standard), :alt => @user.username,  :class => "avatar" ) %>
+<% end %>
+
 
 <p><%=@user.bio%></p>
 
