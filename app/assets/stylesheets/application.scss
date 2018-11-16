@@ -199,13 +199,18 @@ a {
     width: 30%;
     transition: all 0.3s ease 0s;
     
+    & a {
+      color: white;
+      text-decoration: none;
+    }
   }
   
-  btn:hover {
-    background:#f9e79f;
-    color:black;
+  .btn:hover {
+    background:#ee7171;
+    
     
   }
+
   
   .list {
     
