@@ -1,24 +1,32 @@
-# README
+# The Friend Zone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Friend Zone is a Ruby on Rails web app to find new friends with common interests.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## Installing
 
-* Configuration
+Git clone the repo and follow the steps below
 
-* Database creation
+```
+$ bundle
 
-* Database initialization
+```
 
-* How to run the test suite
+# Setting up the environment
+```
+$ rails db create && rails db migrate
+$ rails db seed
+$ rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Built With
+Ruby on Rails
 
-* Deployment instructions
 
-* ...
+## Authors
+
+[Lola Onanuga](https://github.com/lollypop036) & Dario Spina
+
+
+## Ackowledgements
