@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user =User.find(session[:user_id])
+    @user = User.find(session[:user_id])
     @categories = Category.all
     @interests = Interest.all
     
